@@ -19,3 +19,6 @@
   background-color: grey;
   color: white;
 }
+.btn.active{
+  background-color: aqua;
+}
