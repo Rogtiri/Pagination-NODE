@@ -3,8 +3,11 @@ const pagination = document.getElementById('pagination');
 
 const itemsPerPage = 3;
 let totalPage = 0;
+let currentPage = 1;
 
 function fetchPage(page){
+  currentPage = page;
+
   fetch(`/products?page=${page}&limit=${itemsPerPage}`)
     .then(res => res.json())
     .then(data => {
@@ -21,13 +24,23 @@ function fetchPage(page){
         `;
       });
       if(totalPage == 0){
-        const totalPage = Math.ceil(data.total / itemsPerPage);
-        createPagination(totalPage);
+         totalPage = Math.ceil(data.total / itemsPerPage);
       }
+      createPagination(totalPage);
     });
 }
 function createPagination(totals){
   pagination.innerHTML = '';
+
+  const prevBtn = document.createElement('button');
+  prevBtn.textContent = 'назад';
+  prevBtn.disabled = currentPage == 1;
+  prevBtn.addEventListener('click', () => {
+    if(currentPage > 1)
+      fetchPage(currentPage - 1);
+  });
+  pagination.appendChild(prevBtn);
+
   for(let i=1; i<=totals; i++){
     const btn = document.createElement('button');
     btn.textContent = i;
@@ -38,6 +51,15 @@ function createPagination(totals){
 
     pagination.appendChild(btn);
   }
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = 'вперед';
+  nextBtn.disabled = currentPage == totalPage;
+  nextBtn.addEventListener('click', () => {
+    if(currentPage < totalPage)
+      fetchPage(currentPage + 1);
+  });
+  pagination.appendChild(nextBtn);
 }
+
 
 fetchPage(1);
