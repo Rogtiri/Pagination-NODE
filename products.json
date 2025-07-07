@@ -1,0 +1,8 @@
+[
+  {"name": "Товар1", "price": "price1", "image": "images/image 12.png"},
+  {"name": "Товар2", "price": "price2", "image": "images/image 13.png"},
+  {"name": "Товар3", "price": "price3", "image": "images/image 14.png"},
+  {"name": "Товар4", "price": "price4", "image": "images/1.png"},
+  {"name": "Товар5", "price": "price5", "image": "images/2.png"},
+  {"name": "Товар6", "price": "price6", "image": "images/3.png"}
+]

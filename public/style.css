@@ -1,0 +1,21 @@
+#output{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 55px;
+}
+#pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.btn{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
+}
