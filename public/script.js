@@ -4,10 +4,10 @@ const pagination = document.getElementById('pagination');
 const itemsPerPage = 3;
 let totalPage = 0;
 let currentPage = 1;
+let active = 1;
 
 function fetchPage(page){
   currentPage = page;
-
   fetch(`/products?page=${page}&limit=${itemsPerPage}`)
     .then(res => res.json())
     .then(data => {
@@ -44,6 +44,9 @@ function createPagination(totals){
   for(let i=1; i<=totals; i++){
     const btn = document.createElement('button');
     btn.textContent = i;
+    if(i == currentPage){
+      btn.classList.add('active');
+    }
     btn.classList.add('btn');
     btn.addEventListener('click', () => {
       fetchPage(i);
@@ -59,6 +62,7 @@ function createPagination(totals){
       fetchPage(currentPage + 1);
   });
   pagination.appendChild(nextBtn);
+  
 }
 
 
